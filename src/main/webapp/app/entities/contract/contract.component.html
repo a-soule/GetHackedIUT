@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gethackedApp.contract.home.title">Contracts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contract" [routerLink]="['/contract/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gethackedApp.contract.home.createLabel">
+            Create new Contract
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="contracts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gethackedApp.contract.pdf">Pdf</span></th>
+            <th><span jhiTranslate="gethackedApp.contract.date">Date</span></th>
+            <th><span jhiTranslate="gethackedApp.contract.provider">Provider</span></th>
+            <th><span jhiTranslate="gethackedApp.contract.client">Client</span></th>
+            <th><span jhiTranslate="gethackedApp.contract.request">Request</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contract of contracts ;trackBy: trackId">
+                <td><a [routerLink]="['/contract', contract.id, 'view' ]">{{contract.id}}</a></td>
+                <td>{{contract.pdf}}</td>
+                <td>{{contract.date | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="contract.provider">
+                        <a [routerLink]="['../third-party', contract.provider?.id, 'view' ]" >{{contract.provider?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="contract.client">
+                        <a [routerLink]="['../third-party', contract.client?.id, 'view' ]" >{{contract.client?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="contract.request">
+                        <a [routerLink]="['../request', contract.request?.id, 'view' ]" >{{contract.request?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/contract', contract.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/contract', contract.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'contract', { outlets: { popup: contract.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

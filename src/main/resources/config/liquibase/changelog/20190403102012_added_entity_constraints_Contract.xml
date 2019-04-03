@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Contract.
+    -->
+    <changeSet id="20190403102012-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="provider_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract_provider_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="third_party"/>
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract_client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="third_party"/>
+
+        <addForeignKeyConstraint baseColumnNames="request_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract_request_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request"/>
+
+    </changeSet>
+</databaseChangeLog>

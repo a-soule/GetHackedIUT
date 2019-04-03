@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contract">
+            <h2><span jhiTranslate="gethackedApp.contract.detail.title">Contract</span> {{contract.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gethackedApp.contract.pdf">Pdf</span></dt>
+                <dd>
+                    <span>{{contract.pdf}}</span>
+                </dd>
+                <dt><span jhiTranslate="gethackedApp.contract.date">Date</span></dt>
+                <dd>
+                    <span>{{contract.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="gethackedApp.contract.provider">Provider</span></dt>
+                <dd>
+                    <div *ngIf="contract.provider">
+                        <a [routerLink]="['/third-party', contract.provider?.id, 'view']">{{contract.provider?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gethackedApp.contract.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="contract.client">
+                        <a [routerLink]="['/third-party', contract.client?.id, 'view']">{{contract.client?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gethackedApp.contract.request">Request</span></dt>
+                <dd>
+                    <div *ngIf="contract.request">
+                        <a [routerLink]="['/request', contract.request?.id, 'view']">{{contract.request?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contract', contract.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

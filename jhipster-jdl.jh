@@ -1,0 +1,37 @@
+entity User {
+
+}
+
+entity UserThirdPartyMembership {
+	type String,
+    situation String //poste
+}
+
+entity ThirdParty {
+	 tradeName String,//raison sociale
+}
+
+
+entity Contract {
+	pdf String,
+    date Instant
+  
+}
+
+entity Request {
+	maxBuyPrice Float,
+    description String,
+    date Instant
+
+}
+
+relationship ManyToOne {
+	UserThirdPartyMembership to User,
+    UserThirdPartyMembership to ThirdParty,
+}
+
+relationship OneToOne {
+	Contract{provider} to ThirdParty,
+    Contract{client} to ThirdParty,
+    Contract to Request
+}

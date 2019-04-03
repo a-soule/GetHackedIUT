@@ -1,0 +1,26 @@
+{
+    "name": "ThirdParty",
+    "fields": [
+        {
+            "fieldName": "tradeName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "userThirdPartyMembership",
+            "otherEntityRelationshipName": "thirdParty",
+            "relationshipName": "userThirdPartyMembership"
+        }
+    ],
+    "changelogDate": "20190403102011",
+    "entityTableName": "third_party",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

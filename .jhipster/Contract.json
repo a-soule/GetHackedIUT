@@ -1,0 +1,48 @@
+{
+    "name": "Contract",
+    "fields": [
+        {
+            "fieldName": "pdf",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "thirdParty",
+            "otherEntityRelationshipName": "contract",
+            "relationshipName": "provider",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "thirdParty",
+            "otherEntityRelationshipName": "contract",
+            "relationshipName": "client",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "request",
+            "otherEntityRelationshipName": "contract",
+            "relationshipName": "request",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190403102012",
+    "entityTableName": "contract",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

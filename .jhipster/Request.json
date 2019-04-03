@@ -1,0 +1,35 @@
+{
+    "name": "Request",
+    "fields": [
+        {
+            "fieldName": "maxBuyPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "contract",
+            "otherEntityRelationshipName": "request",
+            "relationshipName": "contract",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190403102013",
+    "entityTableName": "request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
