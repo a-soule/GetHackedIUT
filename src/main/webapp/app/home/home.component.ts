@@ -12,6 +12,7 @@ import { LoginModalService, AccountService, Account } from 'app/core';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
+    userName: string;
 
     constructor(
         private accountService: AccountService,
@@ -23,7 +24,19 @@ export class HomeComponent implements OnInit {
         this.accountService.identity().then((account: Account) => {
             this.account = account;
         });
+
         this.registerAuthenticationSuccess();
+
+        console.log('Calling loadHomePageUserInfo');
+        this.accountService.loadHomePageUserInfo().subscribe(
+            res => {
+                console.log('Succeeded loadHomePageUserInfo', res);
+                this.userName = res.body.userName;
+            },
+            errResp => {
+                console.log('Failed loadHomePageUserInfo', errResp);
+            }
+        );
     }
 
     registerAuthenticationSuccess() {

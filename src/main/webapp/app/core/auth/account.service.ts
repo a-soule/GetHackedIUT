@@ -7,6 +7,11 @@ import { Observable, Subject } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { Account } from 'app/core/user/account.model';
 
+export interface HomePageUserInfoDTO {
+    userName: string;
+    contracts: string[];
+}
+
 @Injectable({ providedIn: 'root' })
 export class AccountService {
     private userIdentity: any;
@@ -21,6 +26,10 @@ export class AccountService {
 
     save(account: any): Observable<HttpResponse<any>> {
         return this.http.post(SERVER_API_URL + 'api/account', account, { observe: 'response' });
+    }
+
+    loadHomePageUserInfo(): Observable<HttpResponse<HomePageUserInfoDTO>> {
+        return this.http.get<HomePageUserInfoDTO>(SERVER_API_URL + 'api/homePageUserInfo', { observe: 'response' });
     }
 
     authenticate(identity) {
